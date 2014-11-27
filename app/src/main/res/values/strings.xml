@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OpenAlprDroidApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancelBtnTxt">Cancel</string>
+    <string name="plate_label">Plate Number</string>
+    <string name="processingTime_label">Time taken</string>
+    <string name="save_btn_label">Save</string>
+    <string name="take_picture_btn_label">Take License Plate Picture</string>
+    <string name="recognition_error">Error recognizing plate number in the picture</string>
+
+</resources>
