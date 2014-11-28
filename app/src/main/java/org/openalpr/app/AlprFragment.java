@@ -10,8 +10,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.openalpr.Alpr;
+import static org.openalpr.app.AppConstants.ALPR_ARGS;
+import static org.openalpr.app.AppConstants.JSON_RESULT_ARRAY_NAME;
 
 import java.io.File;
+
+
 
 /**
  * Created by sujay on 27/09/14.
@@ -19,8 +23,6 @@ import java.io.File;
 public class AlprFragment extends Fragment {
 
     private static final String LOG_TAG = AlprFragment.class.getName();
-    private static final String JSON_RESULT_ARRAY_NAME = "results";
-    private static final String ALPR_ARGS = "alprargs";
 
     AsyncListener<AlprResult> listener;
     AlprTask alprTask;

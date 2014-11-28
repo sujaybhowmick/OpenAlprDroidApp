@@ -6,12 +6,12 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import static org.openalpr.app.AppConstants.DLG_MESSAGE;
+
 /**
  * Created by sujay on 24/09/14.
  */
 public class MessageDialogFragment extends DialogFragment {
-
-    private static final String DLG_MESSAGE = "dlgMessage";
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

@@ -34,24 +34,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static org.openalpr.app.AppConstants.*;
+
 
 public class MainActivity extends Activity implements AsyncListener<AlprResult> {
 
     private static final String LOG_TAG = MainActivity.class.getName();
-
-    private static final String BITMAP_STORAGE_KEY = "viewbitmap";
-    private static final String IMAGEVIEW_VISIBILITY_STORAGE_KEY = "imageviewvisibility";
-
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private static final String RUNTIME_DATA_DIR_ASSET = "runtime_data";
-    private static final String ANDROID_DATA_DIR = "/data/data/org.openalpr.app";
-    private static final String OPENALPR_CONF_FILE = "openalpr.conf";
-    private static final String PREF_INSTALLED_KEY = "installed";
-    private static final String JPEG_FILE_PREFIX = "IMG_";
-    private static final String JPEG_FILE_SUFFIX = ".jpg";
-    private static final String ALPR_FRAGMENT_TAG = "alpr";
-    private static final String ALPR_ARGS = "alprargs";
-
 
     private String mCurrentPhotoPath;
     private ImageView mImageView;
