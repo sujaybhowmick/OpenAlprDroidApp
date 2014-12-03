@@ -12,6 +12,8 @@
 
 You will find app-release-unsigned.apk file in OpenAlprDroidApp/app/build/outputs/apk folder
 
+## Native JNI implementation of OpenAlpr API is another project called [openalpr-droidapp-native](https://github.com/sujaybhowmick/openalpr-droidapp-native)
+
 License
 --------
 [Affero GPLv3](http://www.gnu.org/licenses/agpl-3.0.html)
