@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.support.v4.content.FileProvider;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -252,20 +253,28 @@ public class MainActivity extends Activity implements AsyncListener<AlprResult> 
         setErrorText("");
         clearData();
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        File f = null;
-
-        try {
-            f = setUpPhotoFile();
-            mCurrentPhotoPath = f.getAbsolutePath();
-            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-        } catch (IOException e) {
-            e.printStackTrace();
-            f = null;
-            mCurrentPhotoPath = null;
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            try {
+                File f = setUpPhotoFile();
+                 if(f != null) {
+                    Uri photoURI = FileProvider.getUriForFile(this,
+                            "org.openalpr.fileprovider",
+                            f);
+                    mCurrentPhotoPath = f.getAbsolutePath();
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                } else {
+                    Log.e(LOG_TAG, "Failed setUpPhotoFile()");
+                    mCurrentPhotoPath = null;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                mCurrentPhotoPath = null;
+            }
+           // startActivityForResult(takePictureIntent, );
+        } else {
+            Log.e(LOG_TAG, "No camera!");
         }
-
-        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
     }
 
     @Override
@@ -275,7 +284,7 @@ public class MainActivity extends Activity implements AsyncListener<AlprResult> 
             String openAlprConfFile = ANDROID_DATA_DIR + File.separatorChar +
                     RUNTIME_DATA_DIR_ASSET + File.separatorChar +OPENALPR_CONF_FILE;
             handleBigCameraPhoto();
-            String parameters[] = {"us", "", this.mCurrentPhotoPath, openAlprConfFile, "1"};
+            String parameters[] = {"ca"/*"us"*/, "", this.mCurrentPhotoPath, openAlprConfFile, "1"};
             Bundle args = new Bundle();
             args.putStringArray(ALPR_ARGS, parameters);
             AlprFragment alprFragment = (AlprFragment)getFragmentManager()
