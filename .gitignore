@@ -3,4 +3,4 @@
 /.idea/libraries
 .DS_Store
 /build
-OpenAlprDroidApp.iml
+*.iml
