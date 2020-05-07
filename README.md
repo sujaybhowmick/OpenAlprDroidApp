@@ -13,6 +13,6 @@ cd OpenAlprDroidApp/
 ./gradlew assembleRelease
  ```
 
-You will find app-release-unsigned.apk file `OpenAlprDroidApp/app/build/outputs/apk` folder or
+You will find app-release-unsigned.apk file in directory `OpenAlprDroidApp/app/build/outputs/apk` folder or
 
 ## Native JNI implementation of OpenAlpr API is another project called [openalpr-droidapp-native](https://github.com/sujaybhowmick/openalpr-droidapp-native)
